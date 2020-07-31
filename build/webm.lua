@@ -204,12 +204,13 @@ format_filename = function(startTime, endTime, videoFormat)
     local prop_value
     if colon == ":" then
       prop_value = mp.get_property(prop, fallback)
+      local _
+      filename, _ = filename:gsub("%%{" .. prop:gsub("%W", "%%%1") .. ":" .. fallback:gsub("%W", "%%%1") .. "}", prop_value)
     else
       prop_value = mp.get_property(prop, "(error)")
+      local _
+      filename, _ = filename:gsub("%%{" .. prop:gsub("%W", "%%%1") .. "}", prop_value)
     end
-    local _
-    filename, _ = filename:gsub("%%{" .. prop:gsub("%W", "%%%1") .. "}", prop_value)
-    filename, _ = filename:gsub("%%{" .. prop:gsub("%W", "%%%1") .. ":[^}]*}", prop_value)
   end
   for format in filename:gmatch("%%t([aAbBcCdDeFgGhHIjmMnprRStTuUVwWxXyYzZ])") do
     local _
