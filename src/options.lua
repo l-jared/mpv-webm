@@ -46,6 +46,8 @@ local options = {
 	twopass = false,
 	-- If set, applies the video filters currently used on the playback to the encode.
 	apply_current_filters = true,
+	-- If set, applies the current playback speed to the encode.
+	apply_speed = true,
 	-- If set, writes the video's filename to the "Title" field on the metadata.
 	write_filename_on_metadata = false,
 	-- Set the number of encoding threads, for codecs libvpx and libvpx-vp9

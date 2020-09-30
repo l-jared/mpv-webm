@@ -169,7 +169,9 @@ get_video_encode_flags = (format, region) ->
 			"--vf-add=#{f}"
 		})
 
-	append(flags, get_speed_flags!)
+	if options.apply_speed
+		append(command, get_speed_flags!)
+
 	return flags
 
 calculate_bitrate = (active_tracks, format, length) ->
